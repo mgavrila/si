@@ -2,21 +2,58 @@ package ro.ugal.si.model;
 
 public class Cart {
 
-	private int id_product;
-	private int id_user;
+	private int idCart;
+	private int idProduct;
+	private int idUser;
+	private Product customProduct;
+	private User customUser;
 	
-	public int getId_product() {
-		return id_product;
+	public Cart(int idProduct, int idUser) {
+		this.idProduct = idProduct;
+		this.idUser = idUser;
 	}
-	public void setId_product(int id_product) {
-		this.id_product = id_product;
+	
+	public int getIdCart() {
+		return idCart;
 	}
-	public int getId_user() {
-		return id_user;
+	public void setIdCart(int idCart) {
+		this.idCart = idCart;
 	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public int getIdProduct() {
+		return idProduct;
 	}
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
+	}
+	public int getIdUser() {
+		return idUser;
+	}
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	public Product getCustomProduct() {
+		return customProduct;
+	}
+
+	public void setCustomProduct(Product customProduct) {
+		this.customProduct = customProduct;
+	}
+
+	public User getCustomUser() {
+		return customUser;
+	}
+
+	public void setCustomUser(User customUser) {
+		this.customUser = customUser;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [customProduct=" + customProduct + ", customUser=" + customUser + "]";
+	}
+
+	
 	
 	
 }

@@ -19,27 +19,27 @@
 		<div class="wrapper">
 			<div class="inner">
 				<img src="../images/image-1.png" alt="" class="image-1">
-				<form action="">
+				<form action="/si/register" method="post">
 					<h3>New Account?</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" placeholder="Firstname">
+						<input type="text" class="form-control" placeholder="Firstname" name="firstName">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" placeholder="Lastname">
+						<input type="text" class="form-control" placeholder="Lastname" name="lastName">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
-						<input type="text" class="form-control" placeholder="Mail">
+						<input type="text" class="form-control" placeholder="Mail" name="email">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" placeholder="Username">
+						<input type="text" class="form-control" placeholder="Username" name="username">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-lock"></span>
-						<input type="password" class="form-control" placeholder="Password">
+						<input type="password" class="form-control" placeholder="Password" name="password">
 					</div>
 					<button>
 						<span>Register</span>

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="ro.ugal.si.model.Product"%>
+<%@ page import="ro.ugal.si.model.User"%>
+<%@ page import="ro.ugal.si.dao.ProductDaoImpl"%>
+<%@ page import="ro.ugal.si.dao.UserDaoImpl"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,13 +46,17 @@
 					<li role="presentation" class="brand-nav"><a href="#tab2"
 						aria-controls="tab2" role="tab" data-toggle="tab">Update</a></li>
 					<li role="presentation" class="brand-nav"><a href="#tab3"
-						aria-controls="tab3" role="tab" data-toggle="tab">Delete</a></li>
+						aria-controls="tab3" role="tab" data-toggle="tab">Delete
+							product</a><hr></li>					
+					<li role="presentation" class="brand-nav"><a href="#tab4"
+						aria-controls="tab4" role="tab" data-toggle="tab">Delete user</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="tab1">
-						<form>
+						<form action="/si/addProduct" method="post"
+							enctype="multipart/form-data">
 
 							<div class="form-group">
 								<!-- Name field -->
@@ -72,7 +81,7 @@
 							<!-- Product image field -->
 							<div class="form-group">
 								<label for="addProductImage">Product image</label> <input
-									type="file" class="form-control-file" id="addProductImage">
+									type="file" class="form-control-file" id="file" name="file">
 							</div>
 
 
@@ -90,10 +99,109 @@
 						</form>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="tab2">
-						<p>To be continued...</p>
+						<form action="/si/updateProduct" method="post">
+							<%
+								ProductDaoImpl updateDao = new ProductDaoImpl();
+								List<Product> updateProductList = updateDao.getAllProducts();
+								for (Product product : updateProductList) {
+									if (product != null) {
+							%>
+
+							<div class="container">
+								<div class="col-xs-12 col-md-6">
+									<h3><%= product.getName()%></h3>
+									<div class="input-group">
+										<span class="input-group-addon">Name</span> <input
+											id="updateName" type="text" class="form-control"
+											name="updateName" value="<%= product.getName()%>">
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">Price</span> <input
+											id="updatePrice" type="text" class="form-control"
+											name="updatePrice" value="<%= product.getPrice()%>">
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">Author</span> <input
+											id="updateAuthor" type="text" class="form-control"
+											name="updateAuthor" value="<%= product.getAuthor()%>">
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon">Description</span>
+										<textarea class="form-control" cols="25"
+											id="updateDescription" name="updateDescription" rows="5"><%=product.getDescription()%></textarea>
+									</div>
+
+									<div class="form-group">
+										<button class="btn btn-primary "
+											name="updateProduct<%= product.getIdProduct() %>"
+											type="submit">Update</button>
+										<input type="hidden" id="<%= product.getIdProduct()%>"
+											name="hidden" value="<%=product.getIdProduct()%>">
+									</div>
+
+									<hr>
+								</div>
+							</div>
+							<%
+								}
+								}
+							%>
+						</form>
+
+
+
 					</div>
 					<div role="tabpanel" class="tab-pane" id="tab3">
-						<p>To be continued...</p>
+						<form action="/si/deleteProduct" method="post">
+							<div class="form-group">
+								<label for="sel1">User list:</label> <select
+									class="form-control" id="sel1" name="deleteProduct">
+									<%
+										ProductDaoImpl dao = new ProductDaoImpl();
+										List<Product> productList = dao.getAllProducts();
+
+										for (Product p : productList) {
+											if (p != null) {
+									%>
+									<option value="<%=p.getName()%>"><%=p.getName()%></option>
+									<%
+										}
+										}
+									%>
+								</select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary " name="deleteProduct"
+									type="submit">Delete</button>
+
+							</div>
+						</form>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tab4">
+						<form action="/si/deleteUser" method="post">
+							<div class="form-group">
+								<label for="sel1">Product list:</label> <select
+									class="form-control" id="sel1" name="deleteUser">
+									<%
+										UserDaoImpl userDao = new UserDaoImpl();
+										List<User> userList = userDao.getAllUserExceptAdmin();
+
+										for (User u : userList) {
+											if (u != null) {
+									%>
+									<option value="<%=u.getUsername()%>"><%=u.getUsername()%></option>
+									<%
+										}
+										}
+									%>
+								</select>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary " name="deleteUser" type="submit">Delete</button>
+
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

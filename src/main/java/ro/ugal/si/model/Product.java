@@ -2,18 +2,19 @@ package ro.ugal.si.model;
 
 public class Product {
 
-	private int id_product;
+	private int idProduct;
 	private String name;
 	private Double price;
 	private String path;
 	private String description;
 	private String author;
 	
-	public int getId_product() {
-		return id_product;
+
+	public int getIdProduct() {
+		return idProduct;
 	}
-	public void setId_product(int id_product) {
-		this.id_product = id_product;
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
 	}
 	public String getName() {
 		return name;
@@ -45,6 +46,10 @@ public class Product {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Product [idProduct=" + idProduct + ", name=" + name + ", price=" + price + ", path=" + path
+				+ ", description=" + description + ", author=" + author + "]";
+	}
+
 }

@@ -17,15 +17,15 @@
 	<div class="wrapper">
 		<div class="inner">
 			<img src="images/image-1.png" alt="" class="image-1">
-			<form action="">
+			<form action="/si/login" method="post">
 				<h3>Login</h3>
 				<div class="form-holder">
 					<span class="lnr lnr-user"></span> <input type="text"
-						class="form-control" placeholder="Username">
+						class="form-control" placeholder="Username" name="username">
 				</div>
 				<div class="form-holder">
 					<span class="lnr lnr-lock"></span> <input type="password"
-						class="form-control" placeholder="Password">
+						class="form-control" placeholder="Password" name="password">
 				</div>
 
 				<button>

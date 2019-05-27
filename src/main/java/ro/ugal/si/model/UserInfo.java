@@ -2,23 +2,24 @@ package ro.ugal.si.model;
 
 public class UserInfo {
 
-	private int id_userInfo;
-	private int id_user;
+	private int idUserInfo;
+	private int idUser;
 	private String firstName;
 	private String lastName;
 	private String email;
 	
-	public int getId_userInfo() {
-		return id_userInfo;
+	
+	public int getIdUserInfo() {
+		return idUserInfo;
 	}
-	public void setId_userInfo(int id_userInfo) {
-		this.id_userInfo = id_userInfo;
+	public void setIdUserInfo(int idUserInfo) {
+		this.idUserInfo = idUserInfo;
 	}
-	public int getId_user() {
-		return id_user;
+	public int getIdUser() {
+		return idUser;
 	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -38,6 +39,10 @@ public class UserInfo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	@Override
+	public String toString() {
+		return "UserInfo [idUserInfo=" + idUserInfo + ", idUser=" + idUser + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + "]";
+	}
 	
 }
